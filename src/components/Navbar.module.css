@@ -1,0 +1,76 @@
+/* Overall Navbar Styling */
+.navbar {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    padding: 1rem 2rem;
+  }
+  
+  /* Top Section Styling */
+  .topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Logo Styling */
+  .logo img {
+    width: 40px;
+    height: auto;
+  }
+  
+  .logoText {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  /* Navigation Icons Styling */
+  .navIcons {
+    display: flex;
+    align-items: center;
+    gap: 1.0rem;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .language {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .language i {
+    margin-left: 0.2rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Bottom Section: Navigation Links */
+  .navLinks {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+  }
+  
+  .navLinks ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navLinks ul li {
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
