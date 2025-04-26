@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.footerBottom}>
-        <p className={styles.copyright}>© 2023 mettamuse. All rights reserved.</p>
+        <p className={styles.copyright}>Copyright © 2023 mettamuse. All rights reserved.</p>
       </div>
     </footer>
   );

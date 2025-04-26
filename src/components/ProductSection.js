@@ -118,11 +118,11 @@ const ProductSection = ({ products }) => {
                 />
                 <div className={styles.productInfo}>
                   <h3 className={styles.productTitle}>{product.title}</h3>
+                  <div className={styles.priceAndFavorite}>
                   <p className={styles.productDescription}>
                     Sign in or Create an account to see pricing
                   </p>
-                  <div className={styles.priceAndFavorite}>
-                    <p className={styles.price}>${product.price.toFixed(2)}</p>
+                    {/* <p className={styles.price}>${product.price.toFixed(2)}</p> */}
                     <span
                       className={`${styles.favorite} ${isFavorite[product.id] ? styles.favoriteSelected : ''}`}
                       onClick={() => toggleFavorite(product.id)}
