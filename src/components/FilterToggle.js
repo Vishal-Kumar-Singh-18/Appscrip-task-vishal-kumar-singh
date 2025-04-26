@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from '../app/page.module.css';
 
 const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
-  const [isRecommendedOpen, setIsRecommendedOpen] = useState(false); 
-  const [selectedOption, setSelectedOption] = useState('RECOMMENDED'); 
+  const [isRecommendedOpen, setIsRecommendedOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('RECOMMENDED');
+  const dropdownRef = useRef(null);
 
   const toggleRecommended = () => {
     setIsRecommendedOpen((prev) => !prev);
@@ -15,6 +16,19 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
     setSelectedOption(option);
     setIsRecommendedOpen(false); // Close dropdown after selection
   };
+
+  const handleClickOutside = (event) => {
+    if (isRecommendedOpen && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsRecommendedOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isRecommendedOpen]);
 
   const recommendedOptions = [
     'RECOMMENDED',
@@ -29,13 +43,15 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
       <div className={styles.itemsAndToggle}>
         <span className={styles.itemCount}>{itemCount} Items</span>
         <span className={styles.toggleText} onClick={onToggle}>
-          {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
+          {isFilterVisible ? '< HIDE FILTER' : 'SHOW FILTER >'}
         </span>
       </div>
       <div className={styles.recommended}>
-        {selectedOption} <span className={styles.caret} onClick={toggleRecommended}>▼</span>
+        <span className={styles.selectedOptionWrapper} onClick={toggleRecommended}>
+          {selectedOption} <span className={styles.caret}>▼</span>
+        </span>
         {isRecommendedOpen && (
-          <div className={styles.recommendedDropdownContent}>
+          <div ref={dropdownRef} className={styles.recommendedDropdownContent}>
             {recommendedOptions.map((option) => (
               <div
                 key={option}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FilterToggle from './FilterToggle';
 import styles from '../app/page.module.css';
 
@@ -8,6 +8,7 @@ const ProductSection = ({ products }) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isFavorite, setIsFavorite] = useState({});
+  const dropdownRefs = useRef({});
 
   // Set isFilterVisible based on screen size
   useEffect(() => {
@@ -46,6 +47,22 @@ const ProductSection = ({ products }) => {
     }));
   };
 
+  const handleClickOutside = (event) => {
+    if (openDropdown) {
+      const currentDropdownRef = dropdownRefs.current[openDropdown];
+      if (currentDropdownRef && !currentDropdownRef.contains(event.target)) {
+        setOpenDropdown(null);
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openDropdown]);
+
   if (!products) {
     return <p>Loading products...</p>;
   }
@@ -73,7 +90,7 @@ const ProductSection = ({ products }) => {
           <div className={styles.filterCategory}>
             <label>
               <input type="checkbox" />
-              Customizable
+              CUSTOMIZABLE
             </label>
           </div>
 
@@ -92,7 +109,7 @@ const ProductSection = ({ products }) => {
                 <div className={styles.selectionText}>All</div>
               </div>
               {openDropdown === category && (
-                <div className={styles.dropdownContent}>
+                <div ref={(el) => (dropdownRefs.current[category] = el)} className={styles.dropdownContent}>
                   {options.map((option) => (
                     <label key={option} className={styles.checkboxLabel}>
                       <input type="checkbox" />
@@ -119,10 +136,9 @@ const ProductSection = ({ products }) => {
                 <div className={styles.productInfo}>
                   <h3 className={styles.productTitle}>{product.title}</h3>
                   <div className={styles.priceAndFavorite}>
-                  <p className={styles.productDescription}>
-                    Sign in or Create an account to see pricing
-                  </p>
-                    {/* <p className={styles.price}>${product.price.toFixed(2)}</p> */}
+                    <p className={styles.productDescription}>
+                      Sign in or Create an account to see pricing
+                    </p>
                     <span
                       className={`${styles.favorite} ${isFavorite[product.id] ? styles.favoriteSelected : ''}`}
                       onClick={() => toggleFavorite(product.id)}

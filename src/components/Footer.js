@@ -13,18 +13,25 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.contact}>
-          <h2>CONTACT US</h2>
-          <p>+44 221 133 5360</p>
-          <p>customercare@mettamuse.com</p>
+          <div className={styles.contactInfoWrapper}>
+          <h2>CALL US</h2>
+          <div className={styles.contactInfo}>
+            <p>+44 221 133 5360</p>
+            <p>customercare@mettamuse.com</p>
+          </div>
+          </div>
+          <div className={styles.currencyInfoWrapper}>
           <h2>CURRENCY</h2>
           <div className={styles.currency}>
-            <span className={styles.flag}>🌐</span> + USD
+            <span className={styles.flag}>🌐</span>• USD
+          </div>
           </div>
           <p className={styles.currencyNote}>
             Transactions will be completed in Euros and a currency reference is available on hover.
           </p>
         </div>
       </div>
+      <hr />
       <div className={styles.footerMiddle}>
         <div className={styles.brand}>
           <h4>mettā muse</h4>
@@ -36,7 +43,7 @@ const Footer = () => {
           <a href="#compliance">EU Compliance Docs</a>
         </div>
         <div className={styles.links}>
-          <h4>Quick Links</h4>
+          <h4>QUICK LINKS</h4>
           <a href="#orders">Orders & Shipping</a>
           <a href="#join">Join/Login as a Seller</a>
           <a href="#payment">Payment & Pricing</a>
@@ -47,7 +54,7 @@ const Footer = () => {
         </div>
         <div className={styles.socialPayment}>
           <div className={styles.social}>
-            <h4>Follow Us</h4>
+            <h4>FOLLOW US</h4>
             <div className={styles.socialIcons}>
               <span className={styles.icon}><i className="bi bi-instagram"></i></span>
               <span className={styles.icon}><i className="bi bi-linkedin"></i></span>
