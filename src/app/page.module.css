@@ -281,7 +281,7 @@
   .productImage {
     height: 200px;
   }
-  
+
   .itemCount {
     display: none;
   }
@@ -305,7 +305,7 @@
     font-weight: 400;
     line-height: 100%;
   }
-  
+
   .hero p {
     color: #666;
     line-height: 20px;
@@ -318,19 +318,52 @@
   }
 
   .productGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* Display 2 products in a row */
+    gap: 0.5rem; /* Adjust gap between products */
+  }
+
+  .productItem {
+    padding: 0.5rem; /* Adjust padding for smaller items */
   }
 
   .productImage {
-    height: 150px;
+    height: 120px; /* Adjust image height for smaller screens */
+    margin-bottom: 0.5rem;
+  }
+
+  .productTitle {
+    font-size: 0.9rem; /* Adjust title font size */
+    margin-bottom: 0.2rem;
+  }
+
+  .productDescription {
+    font-size: 0.6rem; /* Adjust description font size */
+    margin-bottom: 0.3rem;
+  }
+
+  .favorite {
+    font-size: 1rem; /* Adjust favorite icon size */
   }
 
   .filterToggle {
-    padding: 16px 0;
+    padding: 10px 0; /* Adjust filter toggle padding */
   }
 
   .itemsAndToggle {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .toggleText {
+    margin-left: 0; /* Reset margin for stacked layout */
+    font-size: 0.9rem; /* Adjust toggle text font size */
+  }
+
+  .recommended {
+    font-size: 0.8rem; /* Adjust recommended text font size */
+  }
+
+  .caret {
+    font-size: 0.6rem; /* Adjust caret font size */
   }
 }
