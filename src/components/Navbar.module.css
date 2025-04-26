@@ -97,12 +97,12 @@
 }
 
 .navLinks ul li a:hover {
-  color: #3b3a3a;
+  color: #e44d26;
 }
 
 /* Flyout Menu for Mobile */
 .navLinksOpen {
-  display: none; /* Start hidden, toggle via state */
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: 100%;
@@ -124,10 +124,6 @@
   padding: 0.5rem 0;
 }
 
-.navLinksOpen.active {
-  display: flex; /* Show when active */
-}
-
 /* Mobile View (≤ 768px) */
 @media (max-width: 768px) {
   .hamburger {
@@ -135,11 +131,11 @@
   }
 
   .navLinks {
-    display: none; /* Ensure hidden by default on mobile */
+    display: none; 
   }
 
-  .navLinks.navLinksOpen.active {
-    display: flex; /* Show flyout when toggled */
+  .navLinks.navLinksOpen {
+    display: flex;
   }
 
   .language {
@@ -167,9 +163,5 @@
 
   .navLinks {
     display: flex !important; /* Ensure navLinks always shows on desktop */
-  }
-
-  .navLinksOpen {
-    display: none; /* Prevent flyout on desktop */
   }
 }
