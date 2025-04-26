@@ -7,6 +7,22 @@ import styles from '../app/page.module.css';
 const ProductSection = ({ products }) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
 
+  // Set isFilterVisible based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsFilterVisible(window.innerWidth > 768);
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const toggleFilter = () => {
     setIsFilterVisible((prev) => !prev);
   };
@@ -28,11 +44,10 @@ const ProductSection = ({ products }) => {
       <div className={styles.gridContainer}>
         <aside className={`${styles.filters} ${isFilterVisible ? styles.filtersVisible : styles.filtersHidden}`}>
           <div className={styles.filterCategory}>
-            <label>Customizable</label>
-            <div className={styles.checkbox}>
+            <label>
               <input type="checkbox" />
-              <span></span>
-            </div>
+              Customizable
+            </label>
           </div>
           <div className={styles.filterCategory}>
             <label>Ideal For</label>
@@ -91,6 +106,7 @@ const ProductSection = ({ products }) => {
             </div>
           </div>
         </aside>
+        
         <section className={styles.productGrid}>
           {products.length === 0 ? (
             <p>No products available.</p>

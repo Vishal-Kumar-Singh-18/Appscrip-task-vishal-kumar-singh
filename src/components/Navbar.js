@@ -5,15 +5,20 @@ const Navbar = () => {
     <header className={styles.navbar}>
       {/* Top Section */}
       <div className={styles.topSection}>
-        <div className={styles.logo}>
-          <img src="/logo.svg" alt="Logo" />
+        <div className={styles.hamburgerLogoWrapper}>
+          <span className={styles.hamburger}>
+            <i className="bi bi-list"></i>
+          </span>
+          <div className={styles.logo}>
+            <img src="/logo.svg" alt="Logo" />
+          </div>
         </div>
         <div className={styles.logoText}>LOGO</div>
         <div className={styles.navIcons}>
           <span className={styles.icon}><i className="bi bi-search"></i></span>
           <span className={styles.icon}><i className="bi bi-heart"></i></span>
           <span className={styles.icon}><i className="bi bi-bag"></i></span>
-          <span className={styles.icon}><i className="bi bi-person"></i></span>
+          <span className={`${styles.icon} ${styles.profileIcon}`}><i className="bi bi-person"></i></span>
           <span className={styles.language}>
             ENG <i className="bi bi-chevron-down"></i>
           </span>

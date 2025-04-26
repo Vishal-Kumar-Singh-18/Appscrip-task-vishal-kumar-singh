@@ -18,8 +18,8 @@ export default async function Page() {
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
-        <h1>Discover Our Products</h1>
-        <p>Explore our latest collections and find the perfect product for you.</p>
+        <h1>DISCOVER OUR PRODUCTS</h1>
+        <p>Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor</p>
       </section>
       <ProductSection products={products} />
     </main>

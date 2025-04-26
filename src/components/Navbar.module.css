@@ -1,76 +1,119 @@
 /* Overall Navbar Styling */
 .navbar {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-    padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  padding: 1rem 2rem;
+}
+
+/* Top Section Styling */
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Wrapper for Hamburger and Logo */
+.hamburgerLogoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Small gap between hamburger and logo */
+}
+
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none; /* Hidden by default (desktop view) */
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Logo Styling */
+.logo img {
+  width: 40px;
+  height: auto;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Navigation Icons Styling */
+.navIcons {
+  display: flex;
+  align-items: center;
+  gap: 1.0rem;
+}
+
+.icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.language i {
+  margin-left: 0.2rem;
+  font-size: 0.8rem;
+}
+
+/* Bottom Section: Navigation Links */
+.navLinks {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1.8rem;
+}
+
+.navLinks ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinks ul li {
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Mobile View (≤ 768px) */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger menu in mobile view */
   }
-  
-  /* Top Section Styling */
-  .topSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  /* Logo Styling */
-  .logo img {
-    width: 40px;
-    height: auto;
-  }
-  
-  .logoText {
-    font-size: 1.5rem;
-    font-weight: 800;
-    text-align: center;
-  }
-  
-  /* Navigation Icons Styling */
-  .navIcons {
-    display: flex;
-    align-items: center;
-    gap: 1.0rem;
-  }
-  
-  .icon {
-    font-size: 1.2rem;
-    cursor: pointer;
-  }
-  
-  .language {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .language i {
-    margin-left: 0.2rem;
-    font-size: 0.8rem;
-  }
-  
-  /* Bottom Section: Navigation Links */
+
   .navLinks {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 1.5rem;
+    display: none; /* Hide bottom navigation links in mobile view */
   }
-  
-  .navLinks ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+  .language {
+    display: none; /* Hide language selector in mobile view */
   }
-  
-  .navLinks ul li {
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
+
+  .navIcons {
+    gap: 0.6rem;
   }
-  
+
+  .profileIcon {
+    display: none; /* Hide profile icon in mobile view */
+  }
+}
+
+/* Desktop View (> 768px) */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none; /* Ensure hamburger menu is hidden in desktop view */
+  }
+}

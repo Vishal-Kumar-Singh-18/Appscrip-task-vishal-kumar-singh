@@ -1,19 +1,28 @@
 .main {
   padding: 2rem;
+  background-color: #fff;
 }
 
 .hero {
   text-align: center;
+  margin-bottom: 2rem;
+  width: 50%;
+  margin: 0 auto;
+  font-family: 'Simplon', sans-serif;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  font-weight: 400;
+  line-height: 100%;
 }
 
 .hero p {
   color: #666;
+  line-height: 40px;
 }
 
 .filterToggle {
@@ -22,6 +31,9 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto 1rem auto;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding: 16px 0;
 }
 
 .itemsAndToggle {
@@ -38,6 +50,7 @@
 .toggleText {
   cursor: pointer;
   color: #666;
+  text-decoration: underline;
 }
 
 .recommended {
@@ -73,14 +86,8 @@
   margin-bottom: 0.5rem;
   color: #333;
 }
-
-.checkbox {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox input {
-  margin-right: 0.5rem;
+.filterCategory input[type="checkbox"] {
+  margin-right: 0.5rem; 
 }
 
 .dropdown {
@@ -191,15 +198,40 @@
   .productImage {
     height: 200px;
   }
+  
+  .itemCount {
+    display: none;
+  }
+
+  .toggleText {
+    font-weight: bold;
+    color: #000;
+    margin-left: 0.8rem;
+    text-decoration: none;
+  }
+
+  .hero {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+    font-weight: 400;
+    line-height: 100%;
+  }
+  
+  .hero p {
+    color: #666;
+    line-height: 20px;
+  }
 }
 
 @media (max-width: 480px) {
   .main {
     padding: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
   }
 
   .productGrid {
@@ -211,7 +243,7 @@
   }
 
   .filterToggle {
-    padding: 0 1rem;
+    padding: 16px 0;
   }
 
   .itemsAndToggle {

@@ -8,7 +8,7 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
       <div className={styles.itemsAndToggle}>
         <span className={styles.itemCount}>{itemCount} Items</span>
         <span className={styles.toggleText} onClick={onToggle}>
-          {isFilterVisible ? 'Hide Filter' : 'Show Filter'}
+          {isFilterVisible ? 'HIDE FILTER' : 'SHOW FILTER'}
         </span>
       </div>
       <div className={styles.recommended}>
