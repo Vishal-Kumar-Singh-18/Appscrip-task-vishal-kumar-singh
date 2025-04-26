@@ -97,7 +97,10 @@
 }
 
 .navLinks ul li a:hover {
-  color: #e44d26;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #343333;
+    text-decoration: underline;
+    transition: background-color 0.3s ease, color 0.3s ease, text-decoration 0.3s ease;
 }
 
 /* Flyout Menu for Mobile */
