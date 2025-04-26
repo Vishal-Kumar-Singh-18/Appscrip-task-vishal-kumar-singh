@@ -21,7 +21,11 @@ export default async function Page() {
         <h1>DISCOVER OUR PRODUCTS</h1>
         <p>Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor</p>
       </section>
-      <ProductSection products={products} />
+      <section id="shop">
+        <ProductSection products={products} />
+      </section>
+      <section id="contact">
+      </section>
     </main>
   );
 }

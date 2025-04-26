@@ -6,6 +6,8 @@ import styles from '../app/page.module.css';
 
 const ProductSection = ({ products }) => {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [isFavorite, setIsFavorite] = useState({});
 
   // Set isFilterVisible based on screen size
   useEffect(() => {
@@ -32,81 +34,76 @@ const ProductSection = ({ products }) => {
     console.log('Products received in ProductSection:', products);
   }, [products]);
 
+  // Toggle dropdown visibility
+  const toggleDropdown = (category) => {
+    setOpenDropdown(openDropdown === category ? null : category);
+  };
+
+  const toggleFavorite = (productId) => {
+    setIsFavorite((prev) => ({
+      ...prev,
+      [productId]: !prev[productId],
+    }));
+  };
+
   if (!products) {
     return <p>Loading products...</p>;
   }
 
   const itemCount = products.length;
 
+  // Sample filter options for each category (excluding Customizable)
+  const filterOptions = {
+    'IDEAL FOR': ['Men', 'Women', 'Baby & Kids'],
+    OCCASION: ['Casual', 'Formal', 'Party'],
+    WORK: ['Office', 'Outdoor', 'Remote'],
+    FABRIC: ['Cotton', 'Silk', 'Wool'],
+    SEGMENT: ['Premium', 'Budget', 'Mid-Range'],
+    'SUITABLE FOR': ['Daily Wear', 'Special Occasions'],
+    'RAW MATERIALS': ['Organic', 'Synthetic'],
+    PATTERN: ['Solid', 'Striped', 'Floral'],
+  };
+
   return (
     <div>
       <FilterToggle onToggle={toggleFilter} isFilterVisible={isFilterVisible} itemCount={itemCount} />
       <div className={styles.gridContainer}>
         <aside className={`${styles.filters} ${isFilterVisible ? styles.filtersVisible : styles.filtersHidden}`}>
+          {/* Customizable as standalone checkbox */}
           <div className={styles.filterCategory}>
             <label>
               <input type="checkbox" />
               Customizable
             </label>
           </div>
-          <div className={styles.filterCategory}>
-            <label>Ideal For</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
+
+          {/* Other categories as dropdowns with checkboxes */}
+          {Object.entries(filterOptions).map(([category, options]) => (
+            <div key={category} className={styles.filterCategory}>
+              <div className={styles.filterGroup}>
+                <div
+                  className={styles.dropdown}
+                  onClick={() => toggleDropdown(category)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span className={styles.categoryName}>{category}</span>
+                  <span className={styles.caret}>{openDropdown === category ? '▲' : '▼'}</span>
+                </div>
+                <div className={styles.selectionText}>All</div>
+              </div>
+              {openDropdown === category && (
+                <div className={styles.dropdownContent}>
+                  {options.map((option) => (
+                    <label key={option} className={styles.checkboxLabel}>
+                      <input type="checkbox" />
+                      {option}
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Occasion</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Work</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Fabric</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Segment</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Suitable For</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Raw Materials</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
-          <div className={styles.filterCategory}>
-            <label>Pattern</label>
-            <div className={styles.dropdown}>
-              <span>All</span>
-              <span className={styles.caret}>▼</span>
-            </div>
-          </div>
+          ))}
         </aside>
-        
         <section className={styles.productGrid}>
           {products.length === 0 ? (
             <p>No products available.</p>
@@ -126,8 +123,11 @@ const ProductSection = ({ products }) => {
                   </p>
                   <div className={styles.priceAndFavorite}>
                     <p className={styles.price}>${product.price.toFixed(2)}</p>
-                    <span className={styles.favorite}>
-                      <i className="bi bi-heart"></i>
+                    <span
+                      className={`${styles.favorite} ${isFavorite[product.id] ? styles.favoriteSelected : ''}`}
+                      onClick={() => toggleFavorite(product.id)}
+                    >
+                      <i className={isFavorite[product.id] ? 'bi bi-heart-fill' : 'bi bi-heart'}></i>
                     </span>
                   </div>
                 </div>

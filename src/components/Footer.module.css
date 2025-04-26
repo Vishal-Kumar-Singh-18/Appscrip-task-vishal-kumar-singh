@@ -10,16 +10,16 @@
   max-width: 1200px;
   margin: 0 auto;
   margin-bottom: 2rem;
-  gap: 2rem; /* Increased margin between sections */
+  gap: 2rem; 
 }
 
 .subscribe h2 {
-  font-size: 1.2rem; /* Reduced font size */
+  font-size: 1.2rem; 
   margin-bottom: 0.5rem;
 }
 
 .subscribe p {
-  font-size: 0.8rem; /* Reduced font size */
+  font-size: 0.8rem; 
   margin-bottom: 1rem;
 }
 
@@ -38,15 +38,15 @@
 
 .subscribeButton {
   padding: 0.5rem 1rem;
-  background-color: #fff;
-  color: #000;
-  border: none;
+  background-color: #000;
+  color: #b0b0b0;
+  border: 1px solid #b0b0b0;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .contact h2 {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   margin-bottom: 0.5rem;
 }
 

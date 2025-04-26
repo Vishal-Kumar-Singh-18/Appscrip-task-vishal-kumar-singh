@@ -9,14 +9,14 @@ const Footer = () => {
           <p>Sign up for updates from mettā muse.</p>
           <div className={styles.emailContainer}>
             <input type="email" placeholder="Enter your e-mail..." className={styles.emailInput} />
-            <button className={styles.subscribeButton}>Subscribe</button>
+            <button className={styles.subscribeButton}>SUBSCRIBE</button>
           </div>
         </div>
         <div className={styles.contact}>
-          <h2>Contact Us</h2>
+          <h2>CONTACT US</h2>
           <p>+44 221 133 5360</p>
           <p>customercare@mettamuse.com</p>
-          <h2>Currency</h2>
+          <h2>CURRENCY</h2>
           <div className={styles.currency}>
             <span className={styles.flag}>🌐</span> + USD
           </div>

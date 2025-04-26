@@ -5,6 +5,7 @@
   border-bottom: 1px solid #ddd;
   background-color: #fff;
   padding: 1rem 2rem;
+  position: relative; /* Ensure flyout positions relative to navbar */
 }
 
 /* Top Section Styling */
@@ -19,12 +20,12 @@
 .hamburgerLogoWrapper {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Small gap between hamburger and logo */
+  gap: 0.5rem; 
 }
 
 /* Hamburger Menu Styling */
 .hamburger {
-  display: none; /* Hidden by default (desktop view) */
+  display: none; 
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -35,10 +36,12 @@
   height: auto;
 }
 
+/* Logo Text Styling */
 .logoText {
   font-size: 1.5rem;
   font-weight: 800;
   text-align: center;
+  margin-left: 8.2rem; 
 }
 
 /* Navigation Icons Styling */
@@ -88,18 +91,60 @@
   cursor: pointer;
 }
 
+.navLinks ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.navLinks ul li a:hover {
+  color: #e44d26;
+}
+
+/* Flyout Menu for Mobile */
+.navLinksOpen {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 1rem 0;
+}
+
+.navLinksOpen ul {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLinksOpen ul li {
+  padding: 0.5rem 0;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Mobile View (≤ 768px) */
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* Show hamburger menu in mobile view */
+    display: block; 
   }
 
   .navLinks {
-    display: none; /* Hide bottom navigation links in mobile view */
+    display: none; 
+  }
+
+  .navLinks.navLinksOpen {
+    display: flex;
   }
 
   .language {
-    display: none; /* Hide language selector in mobile view */
+    display: none;
   }
 
   .navIcons {
@@ -107,13 +152,21 @@
   }
 
   .profileIcon {
-    display: none; /* Hide profile icon in mobile view */
+    display: none; 
+  }
+
+  .logoText {
+    margin-left: 0;
   }
 }
 
 /* Desktop View (> 768px) */
 @media (min-width: 769px) {
   .hamburger {
-    display: none; /* Ensure hamburger menu is hidden in desktop view */
+    display: none; 
+  }
+
+  .navLinks {
+    display: flex !important; /* Ensure navLinks always shows on desktop */
   }
 }
