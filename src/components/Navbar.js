@@ -1,14 +1,51 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navLinksRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  // Handle click outside to close the menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navLinksRef.current && !navLinksRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Add event listener when menu is open
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  // Handle resize to close menu when exiting mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false); // Close the menu when exiting mobile view
+      }
+    };
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <header className={styles.navbar}>
@@ -35,7 +72,7 @@ const Navbar = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}>
+      <div ref={navLinksRef} className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}>
         <ul>
           <li><a href="#shop">SHOP</a></li>
           <li><a href="#skills">SKILLS</a></li>
