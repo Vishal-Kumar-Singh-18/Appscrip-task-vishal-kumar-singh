@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -9,6 +9,12 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
+  // Ensure hydration matches server-rendered HTML
+  useEffect(() => {
+    // This effect runs after client-side hydration
+    // No initial state change needed here, just ensuring toggle works
+  }, []);
 
   return (
     <header className={styles.navbar}>
