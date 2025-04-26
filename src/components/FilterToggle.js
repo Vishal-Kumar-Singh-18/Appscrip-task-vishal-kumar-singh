@@ -7,6 +7,7 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
   const [isRecommendedOpen, setIsRecommendedOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('RECOMMENDED');
   const dropdownRef = useRef(null);
+  const toggleRef = useRef(null); // Ref for the toggle element
 
   const toggleRecommended = () => {
     setIsRecommendedOpen((prev) => !prev);
@@ -18,7 +19,12 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
   };
 
   const handleClickOutside = (event) => {
-    if (isRecommendedOpen && dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    if (isRecommendedOpen &&
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      toggleRef.current &&
+      !toggleRef.current.contains(event.target)
+    ) {
       setIsRecommendedOpen(false);
     }
   };
@@ -47,7 +53,7 @@ const FilterToggle = ({ onToggle, isFilterVisible, itemCount }) => {
         </span>
       </div>
       <div className={styles.recommended}>
-        <span className={styles.selectedOptionWrapper} onClick={toggleRecommended}>
+        <span ref={toggleRef} className={styles.selectedOptionWrapper} onClick={toggleRecommended}>
           {selectedOption} <span className={styles.caret}>▼</span>
         </span>
         {isRecommendedOpen && (

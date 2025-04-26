@@ -216,6 +216,9 @@
   height: 250px;
   object-fit: contain;
   margin-bottom: 1rem;
+  display: block; /* Make it a block-level element */
+  margin-left: auto; /* Push it to the right */
+  margin-right: auto; /* Push it to the left */
 }
 
 .productInfo {

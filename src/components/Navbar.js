@@ -12,9 +12,13 @@ const Navbar = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleClickOutside = (event) => {
     if (isMenuOpen && navbarRef.current && !navbarRef.current.contains(event.target)) {
-      setIsMenuOpen(false);
+      closeMenu();
     }
   };
 
@@ -29,7 +33,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        setIsMenuOpen(false); // Close the menu when exiting mobile view
+        closeMenu(); // Close the menu when exiting mobile view
       }
     };
 
@@ -78,11 +82,11 @@ const Navbar = () => {
         {/* Bottom Section */}
         <div ref={navLinksRef} className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`}>
           <ul>
-            <li><a href="#shop">SHOP</a></li>
-            <li><a href="#skills">SKILLS</a></li>
-            <li><a href="#stories">STORIES</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#contact">CONTACT US</a></li>
+            <li><a href="#shop" onClick={closeMenu}>SHOP</a></li>
+            <li><a href="#skills" onClick={closeMenu}>SKILLS</a></li>
+            <li><a href="#stories" onClick={closeMenu}>STORIES</a></li>
+            <li><a href="#about" onClick={closeMenu}>ABOUT</a></li>
+            <li><a href="#contact" onClick={closeMenu}>CONTACT US</a></li>
           </ul>
         </div>
       </header>

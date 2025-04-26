@@ -9,6 +9,7 @@ const ProductSection = ({ products }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isFavorite, setIsFavorite] = useState({});
   const dropdownRefs = useRef({});
+  const toggleRefs = useRef({}); // Ref to store toggle elements
 
   // Set isFilterVisible based on screen size
   useEffect(() => {
@@ -50,7 +51,13 @@ const ProductSection = ({ products }) => {
   const handleClickOutside = (event) => {
     if (openDropdown) {
       const currentDropdownRef = dropdownRefs.current[openDropdown];
-      if (currentDropdownRef && !currentDropdownRef.contains(event.target)) {
+      const currentToggleRef = toggleRefs.current[openDropdown];
+      if (
+        currentDropdownRef &&
+        !currentDropdownRef.contains(event.target) &&
+        currentToggleRef &&
+        !currentToggleRef.contains(event.target)
+      ) {
         setOpenDropdown(null);
       }
     }
@@ -99,6 +106,7 @@ const ProductSection = ({ products }) => {
             <div key={category} className={styles.filterCategory}>
               <div className={styles.filterGroup}>
                 <div
+                  ref={(el) => (toggleRefs.current[category] = el)} // Attach ref to the toggle
                   className={styles.dropdown}
                   onClick={() => toggleDropdown(category)}
                   style={{ cursor: 'pointer' }}
