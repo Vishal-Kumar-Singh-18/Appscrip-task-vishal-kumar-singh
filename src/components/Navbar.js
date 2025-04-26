@@ -11,25 +11,6 @@ const Navbar = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
-  // Handle click outside to close the menu
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navLinksRef.current && !navLinksRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    // Add event listener when menu is open
-    if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    // Cleanup event listener
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isMenuOpen]);
-
   // Handle resize to close menu when exiting mobile view
   useEffect(() => {
     const handleResize = () => {
