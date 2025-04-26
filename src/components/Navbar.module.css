@@ -128,11 +128,6 @@
   display: flex; /* Show when active */
 }
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Mobile View (≤ 768px) */
 @media (max-width: 768px) {
   .hamburger {
